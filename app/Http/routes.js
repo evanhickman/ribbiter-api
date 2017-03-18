@@ -15,6 +15,8 @@
 | Route.resource('user', 'UserController')
 */
 
-const Route = use('Route')
+const Route = use('Route');
+const fetch = require('node-fetch');
 
-Route.on('/').render('welcome')
+
+Route.post('/users', 'UserController.store');
