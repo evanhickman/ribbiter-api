@@ -20,3 +20,6 @@ const fetch = require('node-fetch');
 
 
 Route.post('/users', 'UserController.store');
+Route.get('/users', 'UserController.index');
+
+Route.post('/login', 'UserController.login');

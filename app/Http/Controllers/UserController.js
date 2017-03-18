@@ -11,7 +11,24 @@ class UserController {
     response.send(user);
   }
 
+  * index(request, response) {
+    const users = yield Users.fetch();
+    response.json(users);
+  }
 
+  * login(request, response) {
+    const { username, password } = request.only('username', 'password');
+
+    const user = yield User.query().where({ username }).firstOrFail();
+
+    const isValid = yield Hash.verify(password, user.password);
+
+    if (!isValid) {
+      return response.status(401).json({
+        message: 'Invalid username/password'
+      });
+    }
+  }
 }
 
 module.exports = UserController
