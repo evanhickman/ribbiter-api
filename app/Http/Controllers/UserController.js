@@ -28,6 +28,8 @@ class UserController {
         message: 'Invalid username/password'
       });
     }
+
+    // here
   }
 }
 
