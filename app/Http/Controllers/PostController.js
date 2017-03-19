@@ -10,6 +10,11 @@ class PostController {
 
     response.send(post);
   }
+
+  * index(request, response) {
+    const post = yield Post.fetch();
+    response.json(post);
+  }
 }
 
 module.exports = PostController
