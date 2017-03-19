@@ -29,7 +29,9 @@ class UserController {
       });
     }
 
-    // here
+    const token = yield request.auth.generate(user);
+
+    response.json({ token });
   }
 }
 
