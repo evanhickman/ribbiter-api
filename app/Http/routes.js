@@ -15,6 +15,14 @@
 | Route.resource('user', 'UserController')
 */
 
-const Route = use('Route')
+const Route = use('Route');
+const fetch = require('node-fetch');
 
-Route.on('/').render('welcome')
+
+Route.post('/users', 'UserController.store');
+Route.get('/users', 'UserController.index');
+
+Route.post('/login', 'UserController.login');
+
+Route.post('/posts', 'PostController.store').middleware('auth');
+Route.get('/posts', 'PostController.index').middleware('auth');
